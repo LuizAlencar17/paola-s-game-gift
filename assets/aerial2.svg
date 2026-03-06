@@ -1,0 +1,57 @@
+<!--
+  aerial2.svg — Swooping Bird  (aerial obstacle, type 1)
+  Replace with any 56×36 image (PNG, GIF, SVG).
+  Wing animation is added programmatically by the game's wobble effect.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 36" width="56" height="36">
+  <defs>
+    <linearGradient id="feather" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#546e7a"/>
+      <stop offset="100%" stop-color="#263238"/>
+    </linearGradient>
+  </defs>
+
+  <!-- left wing (back) -->
+  <path d="M 24 20 Q 10 6  0 14 Q 10 22 24 22 Z"
+        fill="#37474f" stroke="#263238" stroke-width="1.2"/>
+  <!-- left wing highlight -->
+  <path d="M 22 20 Q 10 9  3 14" stroke="#546e7a" stroke-width="1" fill="none" stroke-linecap="round"/>
+
+  <!-- right wing (back) -->
+  <path d="M 32 20 Q 46 6  56 14 Q 46 22 32 22 Z"
+        fill="#37474f" stroke="#263238" stroke-width="1.2"/>
+  <!-- right wing highlight -->
+  <path d="M 34 20 Q 46 9  53 14" stroke="#546e7a" stroke-width="1" fill="none" stroke-linecap="round"/>
+
+  <!-- body -->
+  <ellipse cx="28" cy="21" rx="12" ry="9" fill="url(#feather)" stroke="#263238" stroke-width="1.5"/>
+
+  <!-- head -->
+  <circle cx="38" cy="17" r="7" fill="#455a64" stroke="#263238" stroke-width="1.5"/>
+
+  <!-- eye -->
+  <circle cx="41" cy="15" r="3"   fill="#ff1744"/>
+  <circle cx="41" cy="15" r="1.5" fill="#1a0000"/>
+  <circle cx="42" cy="14" r="0.7" fill="rgba(255,255,255,0.8)"/>
+
+  <!-- beak (upper and lower) -->
+  <path d="M 44 17 L 54 19 L 44 21 Z"
+        fill="#ffb300" stroke="#e65100" stroke-width="1" stroke-linejoin="round"/>
+
+  <!-- tail feathers -->
+  <path d="M 16 24 Q 6 30 2 28 Q 8 25 16 22 Z"  fill="#37474f" stroke="#263238" stroke-width="1"/>
+  <path d="M 16 22 Q 5 24 0 20  Q 8 20 16 20 Z"  fill="#455a64" stroke="#263238" stroke-width="1"/>
+
+  <!-- left wing feather tips -->
+  <g fill="none" stroke="#546e7a" stroke-width="0.8" stroke-linecap="round">
+    <line x1="6"  y1="14" x2="2"  y2="18"/>
+    <line x1="12" y1="10" x2="9"  y2="15"/>
+    <line x1="18" y1="8"  x2="16" y2="13"/>
+  </g>
+  <!-- right wing feather tips -->
+  <g fill="none" stroke="#546e7a" stroke-width="0.8" stroke-linecap="round">
+    <line x1="50" y1="14" x2="54" y2="18"/>
+    <line x1="44" y1="10" x2="47" y2="15"/>
+    <line x1="38" y1="8"  x2="40" y2="13"/>
+  </g>
+</svg>

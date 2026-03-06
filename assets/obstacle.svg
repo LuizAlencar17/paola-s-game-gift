@@ -1,0 +1,65 @@
+<!--
+  obstacle.svg — Cactus obstacle
+  ──────────────────────────────────────────────────────────
+  Replace this file with any image you like (PNG, GIF, etc.).
+  The game will scale it to CONFIG.OBSTACLE.WIDTH × height.
+  Recommended size: 48 × 72 px (or any portrait rectangle).
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 48 72" width="48" height="72">
+
+  <defs>
+    <!-- subtle gradient to give the cactus some depth -->
+    <linearGradient id="cactusGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#3a9e3a"/>
+      <stop offset="45%"  stop-color="#56c456"/>
+      <stop offset="100%" stop-color="#2e7d2e"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ── Main trunk ──────────────────────────────── -->
+  <rect x="17" y="18" width="14" height="54"
+        rx="7" ry="7"
+        fill="url(#cactusGrad)" stroke="#276b27" stroke-width="1.5"/>
+
+  <!-- ── Left arm (horizontal part) ─────────────── -->
+  <rect x="3" y="30" width="16" height="10"
+        rx="5" ry="5"
+        fill="url(#cactusGrad)" stroke="#276b27" stroke-width="1.5"/>
+
+  <!-- ── Left arm (vertical upturn) ─────────────── -->
+  <rect x="3" y="18" width="10" height="16"
+        rx="5" ry="5"
+        fill="url(#cactusGrad)" stroke="#276b27" stroke-width="1.5"/>
+
+  <!-- ── Right arm (horizontal part) ────────────── -->
+  <rect x="29" y="36" width="16" height="10"
+        rx="5" ry="5"
+        fill="url(#cactusGrad)" stroke="#276b27" stroke-width="1.5"/>
+
+  <!-- ── Right arm (vertical upturn) ────────────── -->
+  <rect x="36" y="24" width="10" height="16"
+        rx="5" ry="5"
+        fill="url(#cactusGrad)" stroke="#276b27" stroke-width="1.5"/>
+
+  <!-- ── Spines (tiny sharp lines) ──────────────── -->
+  <g stroke="#1b4f1b" stroke-width="1.2" stroke-linecap="round">
+    <!-- trunk spines -->
+    <line x1="24" y1="24" x2="24" y2="18"/>
+    <line x1="21" y1="32" x2="17" y2="29"/>
+    <line x1="27" y1="32" x2="31" y2="29"/>
+    <line x1="21" y1="46" x2="17" y2="43"/>
+    <line x1="27" y1="50" x2="31" y2="47"/>
+    <!-- left arm tip spines -->
+    <line x1="5"  y1="20" x2="3"  y2="16"/>
+    <line x1="11" y1="19" x2="11" y2="15"/>
+    <!-- right arm tip spines -->
+    <line x1="39" y1="26" x2="37" y2="22"/>
+    <line x1="44" y1="26" x2="46" y2="22"/>
+  </g>
+
+  <!-- ── Centre highlight (light stripe) ────────── -->
+  <rect x="22" y="22" width="4" height="46"
+        rx="2" fill="rgba(255,255,255,0.12)"/>
+
+</svg>

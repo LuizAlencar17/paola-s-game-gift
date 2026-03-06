@@ -1,0 +1,48 @@
+<!--
+  aerial1.svg — Falling Meteor  (aerial obstacle, type 0)
+  Replace with any 44×40 image (PNG, GIF, SVG).
+  The game draws a fire trail programmatically while it falls,
+  so the image itself is just the rock body.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 40" width="44" height="40">
+  <defs>
+    <!-- fire trail gradient (top = transparent, bottom = orange) -->
+    <linearGradient id="trail" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="rgba(255,120,0,0)"/>
+      <stop offset="100%" stop-color="rgba(255,160,20,0.7)"/>
+    </linearGradient>
+    <!-- rock radial gradient for depth -->
+    <radialGradient id="rock" cx="35%" cy="28%" r="65%">
+      <stop offset="0%"   stop-color="#90a4ae"/>
+      <stop offset="100%" stop-color="#455a64"/>
+    </radialGradient>
+    <!-- outer glow -->
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="60%"  stop-color="rgba(255,100,0,0)"/>
+      <stop offset="100%" stop-color="rgba(255,80,0,0.45)"/>
+    </radialGradient>
+  </defs>
+
+  <!-- fire trail (tall ellipse above the rock) -->
+  <ellipse cx="22" cy="8" rx="9" ry="14" fill="url(#trail)"/>
+
+  <!-- glow halo -->
+  <ellipse cx="22" cy="28" rx="20" ry="18" fill="url(#glow)"/>
+
+  <!-- rock body — tilted ellipse -->
+  <ellipse cx="22" cy="28" rx="18" ry="16" fill="url(#rock)"
+           stroke="#263238" stroke-width="2" transform="rotate(-15,22,28)"/>
+
+  <!-- surface detail: crater-like pocks -->
+  <circle cx="16" cy="24" r="4"   fill="rgba(0,0,0,0.18)"/>
+  <circle cx="26" cy="32" r="3"   fill="rgba(0,0,0,0.15)"/>
+  <circle cx="28" cy="20" r="2.5" fill="rgba(0,0,0,0.12)"/>
+
+  <!-- glowing crack -->
+  <path d="M 14 18 L 22 30 L 32 24"
+        stroke="#ff7043" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+  <!-- hot spot highlight -->
+  <ellipse cx="14" cy="20" rx="5" ry="3.5" fill="rgba(255,200,100,0.35)"
+           transform="rotate(-20,14,20)"/>
+</svg>

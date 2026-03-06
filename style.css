@@ -1,0 +1,317 @@
+/* =====================================================
+   ENDLESS RUNNER — style.css
+   
+   Sections:
+   1. Reset & Base
+   2. Page layout
+   3. Game container & canvas
+   4. HUD overlays (score, best)
+   5. Screens (start / game-over)
+   6. Buttons & keyboard hints
+   7. Animations
+   8. Responsive tweaks
+====================================================== */
+
+/* -------------------------------------------------- */
+/* 1. Reset & Base                                    */
+/* -------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #1a1a2e;          /* deep night background */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  color: #f0f0f0;
+}
+
+/* -------------------------------------------------- */
+/* 2. Page layout                                     */
+/* -------------------------------------------------- */
+h1, p {
+  text-align: center;
+}
+
+
+/* -------------------------------------------------- */
+/* 3. Game container & canvas                         */
+/* -------------------------------------------------- */
+#game-container {
+  position: relative;           /* anchor for absolute overlays */
+  width: 800px;
+  max-width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0, 200, 255, 0.25),
+              0 0  0  3px #0d3b66;
+  user-select: none;            /* prevent accidental text selection */
+}
+
+#gameCanvas {
+  display: block;               /* removes inline baseline gap */
+  width: 100%;                  /* scale to container width  */
+  height: auto;                 /* keep aspect ratio         */
+  background: #87ceeb;          /* sky-blue fallback before first draw */
+}
+
+
+/* -------------------------------------------------- */
+/* 4. HUD overlays (score, best)                      */
+/* -------------------------------------------------- */
+#score-display,
+#best-display {
+  position: absolute;
+  top: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.2;
+  pointer-events: none;         /* don't block game clicks */
+}
+
+#score-display {
+  right: 18px;
+  text-align: right;
+}
+
+#best-display {
+  left: 18px;
+  text-align: left;
+}
+
+.score-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+#score-value,
+#best-value {
+  font-size: 24px;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  min-width: 60px;
+  text-align: center;
+}
+
+
+/* -------------------------------------------------- */
+/* 5. Screens (start / game-over)                     */
+/* -------------------------------------------------- */
+
+/* Shared overlay style for start + game-over screens */
+.screen {
+  position: absolute;
+  inset: 0;                     /* fills the game container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: rgba(10, 20, 40, 0.78);
+  backdrop-filter: blur(3px);
+  z-index: 10;
+  padding: 24px;
+}
+
+.screen.hidden {
+  display: none;
+}
+
+.game-title {
+  font-size: 40px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #f0e060;
+  text-shadow: 0 0 20px rgba(240, 220, 60, 0.7),
+               0 3px 0 #7a6000;
+  animation: titlePulse 2s ease-in-out infinite;
+}
+
+.instructions {
+  font-size: 15px;
+  color: #c0cfe0;
+  max-width: 320px;
+}
+
+.key-hints {
+  font-size: 14px;
+  color: #a0b8d0;
+  margin-top: -4px;
+}
+
+.score-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 18px;
+  color: #e0e8f0;
+}
+
+.score-results span {
+  font-weight: 700;
+  color: #f0e060;
+  font-size: 22px;
+}
+
+.hint-small {
+  font-size: 12px;
+  color: #607080;
+  margin-top: -4px;
+}
+
+
+/* -------------------------------------------------- */
+/* 6. Buttons & keyboard hints                        */
+/* -------------------------------------------------- */
+.game-btn {
+  padding: 12px 36px;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #1a1a2e;
+  background: linear-gradient(135deg, #f0e060 0%, #f4a200 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #7a5000,
+              0 6px 20px rgba(244, 162, 0, 0.4);
+  transition: transform 0.1s, box-shadow 0.1s;
+  margin-top: 6px;
+}
+
+.game-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #7a5000,
+              0 8px 24px rgba(244, 162, 0, 0.5);
+}
+
+.game-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #7a5000;
+}
+
+/* Keyboard key visual */
+kbd {
+  display: inline-block;
+  padding: 2px 7px;
+  font-size: 12px;
+  font-family: inherit;
+  font-weight: 700;
+  background: #e8eaf0;
+  color: #333;
+  border: 1px solid #999;
+  border-bottom: 3px solid #666;
+  border-radius: 4px;
+}
+
+
+/* -------------------------------------------------- */
+/* 7. Animations                                      */
+/* -------------------------------------------------- */
+
+/* Title glow pulse */
+@keyframes titlePulse {
+  0%, 100% { text-shadow: 0 0 20px rgba(240, 220, 60, 0.7), 0 3px 0 #7a6000; }
+  50%       { text-shadow: 0 0 40px rgba(240, 220, 60, 1.0), 0 3px 0 #7a6000; }
+}
+
+
+/* -------------------------------------------------- */
+/* 8. Responsive tweaks                               */
+/* -------------------------------------------------- */
+
+/* Show/hide platform-specific hints */
+.hint-touch    { display: none; }
+.hint-keyboard { display: inline; }
+
+@media (hover: none) and (pointer: coarse) {
+  /* Touch-primary device: show tap hint, hide keyboard hint */
+  .hint-touch    { display: inline; }
+  .hint-keyboard { display: none; }
+}
+
+@media (max-width: 820px) {
+  body {
+    /* Remove body padding so container fills edge to edge */
+    padding: 0;
+    background: #1a1a2e;
+  }
+
+  #game-container {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .game-title {
+    font-size: 26px;
+    letter-spacing: 2px;
+  }
+
+  .instructions {
+    font-size: 13px;
+  }
+
+  .game-btn {
+    font-size: 15px;
+    padding: 11px 30px;
+    /* Larger tap target on touch screens */
+    min-height: 48px;
+  }
+
+  #score-value,
+  #best-value {
+    font-size: 18px;
+  }
+
+  .score-label {
+    font-size: 9px;
+  }
+
+  .score-results {
+    font-size: 15px;
+  }
+
+  .score-results span {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-title {
+    font-size: 20px;
+  }
+
+  .screen {
+    gap: 10px;
+    padding: 16px;
+  }
+
+  .game-btn {
+    font-size: 14px;
+    padding: 10px 24px;
+  }
+
+  #score-display,
+  #best-display {
+    top: 8px;
+  }
+
+  #score-display { right: 10px; }
+  #best-display  { left:  10px; }
+}

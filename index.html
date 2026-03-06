@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Endless Runner</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- =====================================================
+       GAME CONTAINER
+       All game UI elements are positioned relative to this.
+  ====================================================== -->
+  <div id="game-container">
+
+    <!-- The main canvas where the game is drawn -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- Score display (top-right overlay) -->
+    <div id="score-display">
+      <span class="score-label">SCORE</span>
+      <span id="score-value">0</span>
+    </div>
+
+    <!-- Best score display (top-left overlay) -->
+    <div id="best-display">
+      <span class="score-label">BEST</span>
+      <span id="best-value">0</span>
+    </div>
+
+    <!-- ===================================================
+         START SCREEN — shown before the game begins
+    ==================================================== -->
+    <div id="start-screen" class="screen">
+      <h1 class="game-title">🏃 Endless Runner</h1>
+      <p class="instructions">
+        Dodge the obstacles and survive as long as you can!
+      </p>
+      <div class="key-hints">
+        <span class="hint-keyboard"><kbd>Space</kbd> or <kbd>↑</kbd> to jump</span>
+        <span class="hint-touch">Tap the screen to jump</span>
+      </div>
+      <button id="start-btn" class="game-btn">START GAME</button>
+    </div>
+
+    <!-- ===================================================
+         GAME OVER SCREEN — shown when the player dies
+    ==================================================== -->
+    <div id="game-over-screen" class="screen hidden">
+      <h1 class="game-title">GAME OVER</h1>
+      <div class="score-results">
+        <p>Score &nbsp;<span id="final-score">0</span></p>
+        <p>Best &nbsp;&nbsp;<span id="final-best">0</span></p>
+      </div>
+      <button id="restart-btn" class="game-btn">PLAY AGAIN</button>
+      <p class="hint-small">
+        <span class="hint-keyboard">Press <kbd>Space</kbd> to restart</span>
+        <span class="hint-touch">Tap to restart</span>
+      </p>
+    </div>
+
+  </div><!-- end #game-container -->
+
+  <script type="module" src="js/game.js"></script>
+</body>
+</html>
