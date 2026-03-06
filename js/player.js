@@ -161,12 +161,6 @@ export class Player {
       ctx.clip();
       ctx.drawImage(IMAGES.character, cx - hr, headCY - hr, hr * 2, hr * 2);
       ctx.restore();
-      // Outline
-      ctx.strokeStyle = '#c8893a';
-      ctx.lineWidth   = 1.5;
-      ctx.beginPath();
-      ctx.arc(cx, headCY, hr, 0, Math.PI * 2);
-      ctx.stroke();
     } else {
       // ── Fallback: canvas-drawn face ─────────────────────
       ctx.fillStyle   = '#FFD093';

@@ -28,11 +28,11 @@ export const CONFIG = {
   // ── Canvas / layout ───────────────────────────────────────
   CANVAS: {
     WIDTH:  800,
-    HEIGHT: 300,
+    HEIGHT: 380,
   },
 
   // Y-coordinate of the ground surface (pixels from top)
-  GROUND_Y: 230,
+  GROUND_Y: 253,
 
   // Fixed horizontal position of the player (left edge of hitbox)
   PLAYER_X: 100,

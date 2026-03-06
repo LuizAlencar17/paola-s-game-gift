@@ -130,14 +130,56 @@ h1, p {
 }
 
 .game-title {
-  font-size: 40px;
+  font-size: 26px;
   font-weight: 900;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   text-transform: uppercase;
   color: #f0e060;
   text-shadow: 0 0 20px rgba(240, 220, 60, 0.7),
                0 3px 0 #7a6000;
   animation: titlePulse 2s ease-in-out infinite;
+}
+
+/* ── Birthday greeting ──────────────────────────── */
+.birthday-label {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #f9a8d4;
+  text-shadow: 0 0 12px rgba(249, 168, 212, 0.7);
+  margin-bottom: -8px;
+}
+
+.birthday-name {
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-shadow: 0 0 30px rgba(249, 168, 212, 0.9),
+               0 4px 0 #9d174d;
+  animation: nameGlow 2.4s ease-in-out infinite;
+  line-height: 1.1;
+}
+
+.birthday-message {
+  font-size: 14px;
+  color: #fce7f3;
+  line-height: 1.6;
+  max-width: 280px;
+  text-align: center;
+}
+
+.birthday-divider {
+  width: 60%;
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin: 2px 0;
+}
+
+@keyframes nameGlow {
+  0%, 100% { text-shadow: 0 0 30px rgba(249,168,212,0.9), 0 4px 0 #9d174d; }
+  50%       { text-shadow: 0 0 55px rgba(249,168,212,1.0), 0 4px 0 #9d174d; }
 }
 
 .instructions {
