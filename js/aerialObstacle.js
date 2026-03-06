@@ -4,6 +4,7 @@
 import { CONFIG } from './config.js';
 import { IMAGES } from './assets.js';
 import { randInt } from './utils.js';
+import { drawImageContain } from './utils.js';
 
 export class AerialObstacle {
   /**
@@ -61,7 +62,8 @@ export class AerialObstacle {
   draw(ctx) {
     const img = IMAGES.aerialObstacles[this.type];
     if (img) {
-      ctx.drawImage(img, this.x, this.y, this.width, this.height);
+      // Render at natural aspect ratio, centred in the bounding box
+      drawImageContain(ctx, img, this.x, this.y, this.width, this.height, 'center');
       return;
     }
     switch (this.type) {

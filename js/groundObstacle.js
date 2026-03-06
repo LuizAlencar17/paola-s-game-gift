@@ -3,7 +3,7 @@
 ============================================================================= */
 import { CONFIG } from './config.js';
 import { IMAGES } from './assets.js';
-import { randInt, drawRoundRect } from './utils.js';
+import { randInt, drawRoundRect, drawImageContain } from './utils.js';
 
 export class GroundObstacle {
   /**
@@ -37,7 +37,8 @@ export class GroundObstacle {
   draw(ctx) {
     const img = IMAGES.groundObstacles[this.type];
     if (img) {
-      ctx.drawImage(img, this.x, this.y, this.width, this.height);
+      // Render at natural aspect ratio, pinned to the ground baseline
+      drawImageContain(ctx, img, this.x, this.y, this.width, this.height, 'bottom');
       return;
     }
     // Per-type canvas fallbacks

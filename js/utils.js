@@ -55,3 +55,30 @@ export function drawRoundRect(ctx, x, y, w, h, r) {
   ctx.fill();
   ctx.stroke();
 }
+
+/**
+ * Draw an image scaled to fit inside a bounding box while preserving its
+ * natural aspect ratio ("contain" behaviour).
+ *
+ * @param {CanvasRenderingContext2D} ctx
+ * @param {HTMLImageElement} img
+ * @param {number} x       - left edge of the bounding box
+ * @param {number} y       - top edge of the bounding box
+ * @param {number} maxW    - bounding box width
+ * @param {number} maxH    - bounding box height
+ * @param {'bottom'|'center'} [align='bottom'] - vertical alignment inside the box
+ */
+export function drawImageContain(ctx, img, x, y, maxW, maxH, align = 'bottom') {
+  const ratio  = img.naturalWidth / img.naturalHeight;
+  let drawW, drawH;
+  if (ratio > maxW / maxH) {
+    drawW = maxW;
+    drawH = maxW / ratio;
+  } else {
+    drawH = maxH;
+    drawW = maxH * ratio;
+  }
+  const dx = x + (maxW - drawW) / 2;                              // centre horizontally
+  const dy = align === 'bottom' ? y + (maxH - drawH) : y + (maxH - drawH) / 2;  // align vertically
+  ctx.drawImage(img, dx, dy, drawW, drawH);
+}

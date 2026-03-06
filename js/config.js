@@ -11,11 +11,11 @@ export const CONFIG = {
 
     // 5 ground obstacle image paths
     GROUND_OBSTACLES: [
-      'assets/obstacle1.svg',   // type 0 – cactus
-      'assets/obstacle2.svg',   // type 1 – boulder
-      'assets/obstacle3.svg',   // type 2 – log
-      'assets/obstacle4.svg',   // type 3 – fence
-      'assets/obstacle5.svg',   // type 4 – mushroom
+      'assets/obstacle1.png',   // type 0 – cactus
+      'assets/obstacle2.png',   // type 1 – boulder
+      'assets/obstacle3.png',   // type 2 – log
+      'assets/obstacle4.png',   // type 3 – fence
+      'assets/obstacle5.png',   // type 4 – mushroom
     ],
 
     // 2 aerial obstacle image paths
