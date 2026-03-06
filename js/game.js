@@ -247,6 +247,10 @@ function resetGame() {
 
 /** Begin a new game round. */
 function startGame() {
+  // Resume / start music directly inside the user-gesture call stack.
+  // This is the only reliable way to unlock audio on iOS Safari.
+  bgMusic.play().catch(() => {});
+
   resetGame();
   hideScreens();
   state       = 'playing';
@@ -270,20 +274,8 @@ function endGame() {
 const bgMusic = new Audio('assets/bg-music.mp3');
 bgMusic.loop   = true;
 bgMusic.volume = 0.4;
-
-// Try immediate autoplay; browsers may block it until a user gesture.
-bgMusic.play().catch(() => {
-  // Autoplay was blocked — start on first interaction instead.
-  const unlockAudio = () => {
-    bgMusic.play().catch(() => {});
-    window.removeEventListener('keydown',    unlockAudio);
-    window.removeEventListener('pointerdown', unlockAudio);
-    window.removeEventListener('touchstart',  unlockAudio);
-  };
-  window.addEventListener('keydown',     unlockAudio, { once: true });
-  window.addEventListener('pointerdown', unlockAudio, { once: true });
-  window.addEventListener('touchstart',  unlockAudio, { once: true });
-});
+// play() is called inside startGame(), which is always triggered by a real
+// user gesture (tap / click / keypress) — the only pattern iOS Safari allows.
 
 
 /* ============================================================
