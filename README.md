@@ -16,6 +16,10 @@ Open `index.html` in any browser and enjoy the ride!
 
 Dodge every obstacle for as long as you can — the game gets faster over time. Beat your best score!
 
+* You can access it via:
+    * [Website](https://luizalencar17.github.io/paola-s-game-gift) (main page 🏠)
+
+
 ---
 
 ## ✨ Features
